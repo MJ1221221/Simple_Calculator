@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A premium glassmorphic calculator with advanced arithmetic operations, live calculation history, and smooth animated feedback.">
+  <title>Aether Calc - Premium Glassmorphic Calculator</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <div class="calculator-container" id="calculatorContainer">
+    <!-- Calculator Main Card -->
+    <main class="calculator-card" id="calculatorCard">
+      <!-- Calculator Header -->
+      <header class="calc-header">
+        <div class="brand">
+          <i class="fa-solid fa-wand-magic-sparkles brand-icon"></i>
+          <span>Aether Calc</span>
+        </div>
+        <div class="header-actions">
+          <button id="toggleHistoryBtn" class="icon-btn" title="View History" aria-label="Toggle History">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Calculator Screen -->
+      <section class="calc-screen" aria-live="polite">
+        <div class="expression-display" id="expressionDisplay" aria-label="Current expression"></div>
+        <div class="input-display" id="inputDisplay" aria-label="Input value">0</div>
+      </section>
+
+      <!-- Calculator Keypad -->
+      <section class="calc-keypad" aria-label="Keypad">
+        <!-- Row 1: Actions & Scientific Utilities -->
+        <button class="key btn-action" data-action="clear" id="key-clear">AC</button>
+        <button class="key btn-action" data-action="backspace" id="key-backspace" title="Backspace" aria-label="Backspace">
+          <i class="fa-solid fa-delete-left"></i>
+        </button>
+        <button class="key btn-math" data-operator="percent" id="key-percent">%</button>
+        <button class="key btn-operator" data-operator="divide" id="key-divide" aria-label="Divide">÷</button>
+
+        <!-- Row 2: Scientific & Arithmetic -->
+        <button class="key btn-math" data-operator="sqrt" id="key-sqrt">√</button>
+        <button class="key btn-math" data-operator="square" id="key-square">x²</button>
+        <button class="key btn-math" data-operator="negate" id="key-negate">±</button>
+        <button class="key btn-operator" data-operator="multiply" id="key-multiply" aria-label="Multiply">×</button>
+
+        <!-- Row 3: Numbers & Operators -->
+        <button class="key btn-num" data-val="7" id="key-7">7</button>
+        <button class="key btn-num" data-val="8" id="key-8">8</button>
+        <button class="key btn-num" data-val="9" id="key-9">9</button>
+        <button class="key btn-operator" data-operator="subtract" id="key-subtract" aria-label="Subtract">−</button>
+
+        <!-- Row 4: Numbers & Operators -->
+        <button class="key btn-num" data-val="4" id="key-4">4</button>
+        <button class="key btn-num" data-val="5" id="key-5">5</button>
+        <button class="key btn-num" data-val="6" id="key-6">6</button>
+        <button class="key btn-operator" data-operator="add" id="key-add" aria-label="Add">+</button>
+
+        <!-- Row 5: Numbers, Dec, Equal -->
+        <button class="key btn-num" data-val="1" id="key-1">1</button>
+        <button class="key btn-num" data-val="2" id="key-2">2</button>
+        <button class="key btn-num" data-val="3" id="key-3">3</button>
+        <button class="key btn-equals" data-action="calculate" id="key-equals" aria-label="Equals">=</button>
+
+        <!-- Row 6: Double width zero -->
+        <button class="key btn-num double-width" data-val="0" id="key-0">0</button>
+        <button class="key btn-num" data-val="." id="key-decimal">.</button>
+      </section>
+    </main>
+
+    <!-- Slide-out History Drawer -->
+    <aside class="history-drawer" id="historyDrawer" aria-label="Calculation History">
+      <div class="drawer-header">
+        <h3><i class="fa-solid fa-clock-rotate-left"></i> History</h3>
+        <button id="closeHistoryBtn" class="icon-btn" title="Close" aria-label="Close history">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="history-list" id="historyList">
+        <!-- History items will be injected here dynamically -->
+        <div class="no-history-msg" id="noHistoryMsg">No calculations yet</div>
+      </div>
+      <div class="drawer-footer">
+        <button id="clearHistoryBtn" class="clear-btn">
+          <i class="fa-solid fa-trash-can"></i> Clear History
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Keypress visual indicator overlay (shown brief glow on keyboard interactions) -->
+  <div class="keyboard-hint" id="keyboardHint">
+    <i class="fa-solid fa-keyboard"></i> Keyboard Mode Active
+  </div>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+</html>
